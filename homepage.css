@@ -1,6 +1,6 @@
 body{
 	margin:40px auto;
-	max-width:650px;
+	max-width:700px;
 	line-height:1.6;
 	font-size:18px;
 	color:#d9d9d9;
@@ -19,4 +19,18 @@ a {
 
 hr {
 	border: 1px solid #ff006e;
+}
+
+
+header {
+  overflow: auto;
+}
+
+header aside {
+  float: left;
+}
+
+header img {
+  float: right;
+  margin-right: 200px;
 }
