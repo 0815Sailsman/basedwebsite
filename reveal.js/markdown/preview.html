@@ -1,0 +1,198 @@
+<h2 id="algodat-notizen">AlgoDat Notizen</h2>
+<hr>
+<h2 id="algorithmus">Algorithmus</h2>
+<ul>
+<li>Mechanisch ausführbares Rechenverfahren</li>
+<li>endlich, schrittweise</li>
+<li>jeder Schritt ist Anzahl ausführbarer, eindeutiger Operationen + Angabe über nächsten Schritt</li>
+</ul>
+<hr>
+<h2 id="eigenschaften">Eigenschaften</h2>
+<ul>
+<li>Lösung einer Klasse von Problemen über Eingabe(-parameter) und Ausgabe</li>
+<li>die Beschreibung ist endlich: statische Finitheit</li>
+<li>zu jedem Zeitpunkt nur endlich viel Speicherplatz: dynamische Finitheit</li>
+</ul>
+<hr>
+<ul>
+<li>Terminierung: endlich viele Schritte</li>
+<li>Determiniertheit: Gleiche Eingabe - gleiches Ergebnis</li>
+<li>Determinismus: Gleiche Eingabe - gleicher Rechenverlauf</li>
+</ul>
+<hr>
+<h2 id="applikative-algorithmen">Applikative Algorithmen</h2>
+<ul>
+<li>Menge von Funktionsdefinitionen</li>
+<li>Erste Funktion ist Semantik des Algorithmus (high level / leserlich)</li>
+<li>Aus der Mathematik bekannt (Funktionen, Terme...)</li>
+<li>Oft rekursiv</li>
+<li>Funktionale Programmierung</li>
+</ul>
+<hr>
+<ul>
+<li>Keine Variablen</li>
+<li>Keine Klassen, Methoden</li>
+<li>Keine Zuweisunge</li>
+<li>kein while, for, if</li>
+</ul>
+<hr>
+<h2 id="imperative-algorithmen">Imperative Algorithmen</h2>
+<ul>
+<li>Anweisungen und Variablen</li>
+<li>Sequentiell</li>
+</ul>
+<hr>
+<h2 id="beschreibung-von-algorithmen">Beschreibung von Algorithmen</h2>
+<ul>
+<li>Graphisch (Diagramm, UML, PAP, ...)</li>
+<li>Textuell (Informell, Pseudocode, code...)</li>
+</ul>
+<hr>
+<h2 id="suchen">Suchen</h2>
+<h2 id="eine-der-häufigsten-aufgaben-von-computern">Eine der häufigsten Aufgaben von Computern</h2>
+<h2 id="sequentielle-suche">Sequentielle Suche</h2>
+<h2 id="einfach-eintrag-für-eintrag-durchgehen-best-case-1-worst-case-n-avg-case-n12-komplexität-on">Einfach Eintrag für Eintrag durchgehen
+Best Case: 1
+Worst Case: n
+Avg. Case: (n+1)/2
+Komplexität: O(n)</h2>
+<h2 id="binäre-suche">Binäre Suche</h2>
+<h2 id="folge-muss-sortiert-sein-1-mitte-starten-2-gucken-ob-es-das-gesuchte-ist-wenn-ja-fertig-3-sonst-ist-es-größer-oder-kleiner-4-dementsprechende-hälfte-der-folge-nehmen-und-damit-bei-schritt-2-weitermachen">Folge muss sortiert sein
+1. Mitte starten
+2. Gucken ob es das gesuchte ist, wenn ja fertig
+3. Sonst: Ist es größer oder kleiner?
+4. Dementsprechende Hälfte der Folge nehmen und damit bei Schritt 2 weitermachen</h2>
+<h2 id="komplexität">Komplexität</h2>
+<p>Best Case: 1
+Worst Case: ~log n
+Avg. Case (same for success and failure): ~log n
+Komplexität: O(log n)</p>
+<hr>
+<h2 id="sortieren">Sortieren</h2>
+<h2 id="ebenso-wichtig-wie-suchen-siehe-komplexität-binäre-suche-vs-sequentielle-suche">Ebenso wichtig wie suchen, siehe Komplexität Binäre Suche vs Sequentielle Suche</h2>
+<h2 id="ordnungsrelation">Ordnungsrelation</h2>
+<h2 id="wenn-man-über-eine-menge-eine-ordnungsrelation-bilden-kann-kann-man-sie-sortieren----reflexiv-antisymmetrisch-und-transitiv----total-wenn-man-jedes-element-miteinander-vergleichen-kann-sonst-partiell">Wenn man über eine Menge eine Ordnungsrelation bilden kann, kann man sie sortieren
+ - Reflexiv, antisymmetrisch und transitiv
+ - Total wenn man jedes Element miteinander vergleichen kann, sonst partiell</h2>
+<h2 id="verfahren">Verfahren</h2>
+<h2 id="intern--in-hauptspeicherstrukturen-extern-auf-externen-medien-stabil-immer-gleiche-reihenfolge-relativer-schlüssel">Intern : In Hauptspeicherstrukturen
+Extern: Auf externen Medien
+Stabil: Immer gleiche Reihenfolge relativer Schlüssel</h2>
+<h2 id="insertion-sort">Insertion Sort</h2>
+<h2 id="von-links-nach-rechts-element-für-element-durchgehen-dortiges-element-nehmen-und-so-lange-mit-linkem-nachbarn-tauschen-bis-es-passt-komplexität-on²-------doppelte-for-schleife-gaußsche-summenformel">Von links nach rechts Element für Element durchgehen
+Dortiges Element nehmen und so lange mit linkem Nachbarn tauschen bis es passt
+Komplexität: O(n²)
+    -&gt; Doppelte for Schleife, Gaußsche Summenformel</h2>
+<h2 id="gaußsche-summenformel">Gaußsche Summenformel</h2>
+<h2 id="bei-sowas-wie-insertion-sort-hat-man-die-äußere-for-schleife-die-n-mal-läuft-die-innere-erst-1-mal-am-ende-n-1-mal-resultiert-in-ungefähr-n-1--05n---on²">Bei sowas wie Insertion Sort hat man die äußere for-Schleife die n-mal läuft
+Die innere erst 1 mal, am Ende n-1 mal
+Resultiert in ungefähr n-1 * 0,5*n -&gt; O(n²)</h2>
+<h2 id="selection-sort">Selection Sort</h2>
+<h2 id="größten-wert-suchen-und-an-letzte-stelle-der-sortierten-liste-packen-unabhängig-vom-case-immer-n²2-schritte-komplexität-von-on²---wieder-doppelte-for-schleife">Größten Wert suchen und an letzte Stelle der sortierten Liste packen
+Unabhängig vom Case immer ~n²/2 Schritte
+Komplexität von O(n²) -&gt; wieder doppelte for Schleife</h2>
+<h2 id="bubble-sort">Bubble Sort</h2>
+<h2 id="so-lange-wie-unsortiert-von-links-nach-rechts-durchegehen-wenn-benachbarte-elemente-unsortiert-sind-tauschen-bubblet-jede-iteration-den-größten-übrigen-wert-nach-rechts">So lange wie unsortiert:
+Von links nach rechts durchegehen
+Wenn benachbarte Elemente unsortiert sind tauschen
+&quot;Bubblet&quot; jede Iteration den größten übrigen Wert nach rechts</h2>
+<h2 id="merge-sort">Merge Sort</h2>
+<h2 id="liste-so-lange-in-teile-zerlegen-bis-die-alle-nurnoch-1-groß-sind-dann-schritt-für-schritt-diese-zusammenfassen-und-sortieren-vorteil-man-merged-immer-bereits-sortierte-listen-komplexität-von-on--log-n-teile-und-herrsche">Liste so lange in Teile zerlegen bis die alle nurnoch 1 groß sind
+Dann Schritt für Schritt diese zusammenfassen und sortieren
+Vorteil: Man merged immer bereits sortierte Listen
+Komplexität von O(n * log n)
+Teile und Herrsche</h2>
+<h2 id="quick-sort">Quick Sort</h2>
+<h2 id="ähnliche-aufteilung-wie-merge-sort-aber-in-place-1-pivot-element-nehmen-zb-mittleres-2-von-links-nach-rechts-laufen-bis-größeres-element-als-pivot-gefunde-3-von-rechts-nach-links-laufen-bis-kleineres-element-als-pivot-gefunden-4-tauschen-5-solange-machen-bis-sich-die-2-indize-kreuzen-6-rekursive-wiederholung-für-linke-sortierte-liste-und-rechte-sortierte-liste-split-am-kreuz-von-links-und-rechts">Ähnliche Aufteilung wie Merge Sort, aber in Place
+1. Pivot Element nehmen (z.B. mittleres)
+2. Von links nach rechts laufen bis größeres Element als Pivot gefunde
+3. Von rechts nach links laufen bis kleineres Element als Pivot gefunden
+4. Tauschen
+5. Solange machen bis sich die 2 Indize kreuzen
+6. Rekursive Wiederholung für linke sortierte Liste und rechte sortierte Liste (Split am Kreuz von links und rechts)</h2>
+<h2 id="best-case-n--log-n-worst-case-n²-sehr-selten-avg-case-n--log-n-komplexität-is-on--log-n-im-vergleich-zu-mergesort-ist-quicksort-instabil">Best Case: n * log n
+Worst Case: n² (sehr selten=
+Avg. Case: n * log n
+Komplexität is O(n * log n)
+Im Vergleich zu MergeSort ist QuickSort instabil!</h2>
+<h2 id="shell-sort">Shell Sort</h2>
+<h2 id="basically-insertion-sort-unterschied-man-schiebt-nicht-um-1-beim-einfügen-sondern-um-h">Basically Insertion Sort
+Unterschied: Man schiebt nicht um 1 beim einfügen sondern um h</h2>
+<h2 id="vergleich">Vergleich</h2>
+<p>Selection Sort	Instabil	n²/2
+Insertion Sort	Stabil		n²/4
+Bubble Sort	Stabil		n²/2
+MergeSort	Stabil		n log n
+QuickSort	Instabil	n log n
+Shell Sort	Instabil	n^4/3</p>
+<hr>
+<h2 id="komplexität-theoretische-analyse-eines-algorithmus-unabhängig-von-hardware-programmierpsprach-etc">##Komplexität
+Theoretische Analyse eines Algorithmus
+Unabhängig von Hardware, Programmierpsprach etc</h2>
+<h2 id="aufwandsfunktion">Aufwandsfunktion</h2>
+<h2 id="ist-meist-nicht-exakt-bestimmbar-abschätzung-des-aufwands-ungefähres-rechnen-mit-größenordnungen">Ist meist nicht exakt bestimmbar
+Abschätzung des Aufwands, ungefähres Rechnen mit Größenordnungen</h2>
+<h2 id="o-notation">O-Notation</h2>
+<h2 id="bestimmung-der-obere-schranke-g-von-f-man-sucht-eine-n0-und-ein-c-ab-n0-is-c--gn--fn-dann-hat-f-eine-komplexität-von-og-------f-wächst-höchstens-so-schnell-wie-g">Bestimmung der obere Schranke g von f
+Man sucht eine n0 und ein c
+Ab n0 is c * g(n) &gt;= f(n)
+Dann hat f eine Komplexität von O(g)
+    -&gt; f wächst höchstens so schnell wie g</h2>
+<ul>
+<li>Weglassen von multiplikativen Konstaten</li>
+<li>Weglassen von additiven Konstanten</li>
+<li>Beschränkung auf höchsten Exponenten</li>
+<li>Basis des log is egal, ist im Endeffekt eh nur ein Vorfaktor</li>
+</ul>
+<hr>
+<h2 id="o1--konstante-komplexität-olog-n-logarithmische---on--lineare---on-log-n-leicht-übrlineare---on²--quadratische---on³--kubische---oxn--exponentiell--">O(1)		Konstante Komplexität
+O(log n)	Logarithmische &quot;-&quot;
+O(n)		Lineare &quot;-&quot;
+O(n log n)	Leicht übrlineare &quot;-&quot;
+O(n²)		Quadratische &quot;-&quot;
+O(n³)		Kubische &quot;-&quot;
+O(x^n)		Exponentiell &quot;-&quot;</h2>
+<h2 id="obere-schranke-ist-o-untere-schranke-ist-großes-omega-asymptotisch-scharfe-schranke-ist-o-mit-strich-in-mitte">Obere Schranke ist O
+Untere Schranke ist großes Omega
+Asymptotisch scharfe Schranke ist O mit strich in mitte</h2>
+<h2 id="p-vs-np">P vs NP</h2>
+<p>P kann deterministisch in nicht exponentieller Zeit gelöst werden
+NP kann deterministisch in exponentieller Zeit gelöst werden
+P != NP ? -&gt; Wahrscheinlich ja, aber ungelöst</p>
+<hr>
+<h2 id="datenstrukturen">Datenstrukturen</h2>
+<h2 id="art-daten-zu-verwalten-und-zu-verknüpfen-um-in-geeignteter-weise-auf-diee-zugreifen-zu-könne-und-sie-zu-manipulieren">Art, Daten zu verwalten und zu verknüpfen um in geeignteter Weise auf diee zugreifen zu könne und sie zu manipulieren</h2>
+<h2 id="stack-lifo">Stack (LIFO)</h2>
+<ul>
+<li>push</li>
+<li>pop</li>
+<li>top</li>
+<li>isEmpty</li>
+</ul>
+<hr>
+<h2 id="queuefifo">Queue(FIFO)</h2>
+<ul>
+<li>enter</li>
+<li>leave</li>
+<li>isEmpty</li>
+<li>front
+Implementierung z.B. mit Ringpuffer</li>
+</ul>
+<hr>
+<h2 id="linked-list">Linked List</h2>
+<ul>
+<li>Im Gegensatz zu bisherigen Datentypen dynamische Größe</li>
+<li>Verschiedene Knoten die miteinanader verknüpft sind</li>
+<li>Knoten enthalten Inhalt und Pointer auf nächsten</li>
+<li>Spezieller Head Knoten; Letzter zeigt auf null</li>
+</ul>
+<hr>
+<ul>
+<li>addFirst</li>
+<li>getFirst</li>
+<li>removeFirst</li>
+<li>addLast</li>
+<li>getLast</li>
+<li>removeLast</li>
+</ul>
+<hr>

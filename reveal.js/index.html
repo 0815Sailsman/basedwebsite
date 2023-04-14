@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<script>
+			function GetURLParameter(sParam)
+			{
+			    var sPageURL = window.location.search.substring(1);
+			    var sURLVariables = sPageURL.split('&');
+			    for (var i = 0; i < sURLVariables.length; i++)
+			    {
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam)
+				{
+				    return sParameterName[1];
+				}
+			    }
+			}
+
+			function bruh() {
+				console.log("markdown/" + GetURLParameter('markdown') + ".md");
+				document.getElementById("mysections").setAttribute("data-markdown",("markdown/" + GetURLParameter('markdown') + ".md"));
+				//document.getElementById("mysections").setAttribute("data-markdown-parsed", "false");
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+			}
+		</script>
+	</head>
+	<body onload="bruh()">
+		<div class="reveal">
+			<div class="slides">
+				<section id="mysections"
+					 data-separator="^\n---\n\n"
+					 data-separator-vertical="^---\n"
+					 data-separator-notes="^Note:"
+					 data-charset="utf-8">
+				</section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+
+
+		</script>
+	</body>
+</html>
