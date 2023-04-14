@@ -1,6 +1,3 @@
 [submodule "twitch"]
 	path = twitch
 	url = git@github.com:0815Sailsman/twitch.git
-[submodule "rechnerstrukturen-presi"]
-	path = rechnerstrukturen-presi
-	url = git@github.com:0815Sailsman/rechnerstrukturen-presi.git
