@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/marked": "^4.0.8"
+  }
+}
