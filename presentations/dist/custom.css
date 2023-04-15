@@ -1,0 +1,13 @@
+.box {
+	border: 1px solid white;
+}
+
+.list {
+	width: 45%;
+
+}
+
+.horizontal {
+	display:flex;
+	justify-content: space-between;
+}

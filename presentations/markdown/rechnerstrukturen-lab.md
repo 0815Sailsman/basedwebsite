@@ -51,20 +51,6 @@ The following slides contain tiny reminders and anecdotes of these; skip if unne
 [Hex explained](https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:digital-information/xcae6f4a7ff015e7d:hexadecimal-numbers/a/hexadecimal-numbers)
 ---
 ## How data is organized
-<style>.box {
-	border: 1px solid white;
-}
-
-.list {
-	width: 45%;
-
-}
-
-.horizontal {
-	display:flex;
-	justify-content: space-between;
-}
-</style>
 <div class="horizontal">
 	<div class="list">
 		<span style="font-size:32px">Data (lets say Bytes)</span>
@@ -122,7 +108,7 @@ For the sake of completeness, here they are again though:
 [CPU Datasheet](resources/proc-datasheet.pdf)  
 [Board Datasheet](resources/board-datasheet.pdf)  
 [Assembly Documentation](https://developer.arm.com/documentation/dui0473/m/arm-and-thumb-instructions/arm-and-thumb-instruction-summary?lang=en)
-						
+
 ---
 
 ## Approaching the task
