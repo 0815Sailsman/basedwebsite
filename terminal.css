@@ -1,0 +1,137 @@
+#terminal {
+	animation-duration: 2s, 4s;
+	animation-name: build-terminal, color-terminal;
+	animation-delay: 0s, 2s;
+	animation-iteration-count: 1, infinite;
+	position: fixed;
+	top: 3vh;
+	left: 2vw;
+	width: 96vw;
+	height: 92vh;
+	padding: 0px;
+	z-index: 3;
+}
+
+#terminal-overlay-top {
+	animation: reveal-terminal-top;
+	animation-duration: 2s;
+
+	position: fixed;
+	bottom: 96vh;
+	left: 2vw;
+	width: 96vw;
+	height: 46vh;
+	padding: 0px;
+
+	background-color: black;
+	z-index: 2;
+}
+
+@keyframes reveal-terminal-top {
+	from {
+		bottom: calc(50vh - 1px - 0.5em);
+	}
+
+	50% {
+		bottom: calc(50vh - 1px - 0.5em);
+	}
+
+	to {
+		bottom: 96vh;
+	}
+}
+
+#terminal-overlay-bot {
+	animation: reveal-terminal-bot;
+	animation-duration: 2s;
+
+	position: fixed;
+	top: 96vh;
+	left: 2vw;
+	width: 96vw;
+	height: 46vh;
+	padding: 0px;
+
+	background-color: black;
+	z-index: 2;
+}
+
+@keyframes reveal-terminal-bot {
+	from {
+		top: calc(50vh - 1px - 0.5em);
+	}
+
+	50% {
+		top: calc(50vh - 1px - 0.5em);
+	}
+
+	to {
+		top: 96vh;
+	}
+}
+
+@keyframes build-terminal {
+	from {
+		left: 50vw;
+		width: 1px;
+		height: 1px;
+		top: calc(50vh - 1px - 0.5em);
+	}
+
+	50% {
+		left: 2vw;
+		width: 96vw;
+		height: 1px;
+
+		top: calc(50vh - 1px - 0.5em);
+	}
+	to {
+		height: 92vh;
+	}
+}
+
+@keyframes color-terminal {
+	from {
+		border-color: #ff006e;
+	}
+
+	10% {
+		border-color: white;
+	}
+
+	20% {
+		border-color: lime;
+	}
+
+	30% {
+		border-color: cyan;
+	}
+
+	40% {
+		border-color: yellow;
+	}
+
+	50% {
+		border-color: purple;
+	}
+
+	60% {
+		border-color: orange
+	}
+
+	70% {
+		border-color: green;
+	}
+
+	80% {
+		border-color: blue;
+	}
+
+	90% {
+		border-color: gray;
+	}
+
+	to {
+		border-color: #ff006e;
+	}
+}
