@@ -11,6 +11,7 @@
 	padding: 0px;
 	z-index: 3;
 	pointer-events: none;
+	margin: 0px;
 }
 
 #terminal-overlay-top {
@@ -18,7 +19,7 @@
 	animation-duration: 2s;
 
 	position: fixed;
-	bottom: 96vh;
+	bottom: 97vh;
 	left: 2vw;
 	width: 96vw;
 	height: 100vh;
@@ -47,7 +48,7 @@
 	animation-duration: 2s;
 
 	position: fixed;
-	top: 96vh;
+	top: 95vh;
 	left: 2vw;
 	width: 96vw;
 	height: 100vh;
@@ -135,4 +136,8 @@
 	to {
 		border-color: #ff006e;
 	}
+}
+
+#verytop {
+margin-top: -50px;
 }
