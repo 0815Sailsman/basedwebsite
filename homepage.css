@@ -20,6 +20,7 @@ a {
 
 hr {
 	border: 1px solid #ff006e;
+	width: 98%;
 }
 
 
@@ -40,9 +41,4 @@ header img {
 	font-size: 20px;
 	display:flex;
 	justify-content: space-evenly;
-}
-
-.long-hr {
-	margin-left:-25vw;
-	margin-right: -25vw;
 }
