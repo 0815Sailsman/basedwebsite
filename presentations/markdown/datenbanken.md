@@ -79,6 +79,7 @@ Spalten definieren indem man col names im create table anlegt
 Außerdem constraints angeben  
 ---
 ### Constraints
+# TODO Alle constraints richtig aus folien übernehmen
  - [NOT NULL | NULL]
  - [DEFAULT default_value]
  - [AUTO_INCREMENT]
@@ -94,10 +95,13 @@ eben nur, dass ich keine Aussage darüber treffe
 #### Primary Key
 Entweder direkt hinter ein Attribut  
 ***PRIMARY KEY MIT LEERZEICHEN!***  
-Oder nach unten, und dann auch ez mit mehreren Attributen kombinieren
+Oder nach unten, und dann auch ez mit mehreren Attributen kombinieren  
+Automatisch NOT NULL
 ---
 #### Auto Increment
 ***AUTO_INCREMENT MIT UNTERSTRICH!***
-Zählt halt hoch, schln für künstliche Schlüssel
+Zählt halt hoch, schön für künstliche Schlüssel  
+Erhöht den höchsten Zahlenwert um 1  
+Triggerbar mit 0, DEFAULT, NULL
 ---
 
