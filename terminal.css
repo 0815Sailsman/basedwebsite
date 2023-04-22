@@ -1,6 +1,6 @@
-#terminal {
+.terminal {
 	animation-duration: 2s, 4s;
-	animation-name: build-terminal, color-terminal;
+	animation-name: build-terminal, rgb-border;
 	animation-delay: 0s, 2s;
 	animation-iteration-count: 1, infinite;
 	position: fixed;
@@ -12,6 +12,13 @@
 	z-index: 3;
 	pointer-events: none;
 	margin: 0px;
+}
+
+#open-terminal {
+	animation-duration: 4s;
+	animation-name: rgb-border;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
 }
 
 #terminal-overlay-top {
@@ -92,7 +99,7 @@
 	}
 }
 
-@keyframes color-terminal {
+@keyframes rgb-border {
 	from {
 		border-color: #ff006e;
 	}
