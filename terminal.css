@@ -76,14 +76,14 @@
 	from {
 		left: 50vw;
 		width: 1px;
-		height: 1px;
+		height: 0px;
 		top: calc(50vh - 1px - 0.5em);
 	}
 
 	50% {
 		left: 2vw;
 		width: 96vw;
-		height: 1px;
+		height: 0px;
 
 		top: calc(50vh - 1px - 0.5em);
 	}
