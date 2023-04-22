@@ -1,4 +1,6 @@
-window.onload = function() {
+window.addEventListener('load', randomImgMain, false);
+
+function randomImgMain() {
 	var myImage = document.getElementById("topimg");
 	const possible = [
 		"blob.gif", "pepeJam.webp", "pepeD.webp", "catJAM.webp", "bongoTap.webp", "blobDance.webp", "nodders.webp", "dance.webp",

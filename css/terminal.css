@@ -1,3 +1,99 @@
+.typed-out-container {
+	display: inline-block;
+}
+
+.typed-out-container-auto {
+
+}
+
+.not-typed-out {
+	overflow: hidden;
+	width: 0;
+	border: none;
+}
+
+.not-typed-out li::marker {
+	content: "";
+}
+
+.being-typed-out {
+	overflow: hidden;
+	border-right: .15em solid #ff006e;
+	width: 0;
+	white-space: nowrap;
+}
+
+.being-typed-out-few {
+	animation:
+		typing .05s steps(10, end) forwards,
+      		blink .8s infinite;
+	animation-delay:0s, .1s;
+}
+
+.being-typed-out-avg {
+	animation:
+		typing .075s steps(20, end) forwards,
+      		blink .8s infinite;
+	animation-delay:0s, .15s;
+}
+
+.being-typed-out-lot {
+	animation:
+		typing .1s steps(30, end) forwards,
+      		blink .8s infinite;
+	animation-delay:0s, .2s;
+}
+
+.being-typed-out-img {
+	animation:
+		typing-img .01s steps(20, end) forwards,
+      		blink .8s infinite;
+	animation-delay:0s, .25s;
+}
+
+.being-typed-out-li {
+	animation:
+		typing-img .01s steps(10, end) forwards,
+      		blink .8s infinite;
+	animation-delay:0s, .01s;
+}
+
+.typed-out {
+
+}
+
+.typed-out li::marker {
+	content: normal;
+}
+
+.blink {
+border-right: .15em solid #ff006e;
+	animation-name: blink;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes typing-img {
+  from { width: 0 }
+  to { width: initial }
+}
+
+@keyframes typing-img {
+  from { height: 24px }
+  to { height: 24px }
+}
+
+@keyframes blink {
+  from { border-color: transparent; }
+  to { border-color: #ff006e; }
+}
+
 .terminal-background {
 	background-color: black;
 	background-image: radial-gradient(
