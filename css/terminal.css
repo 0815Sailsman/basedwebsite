@@ -1,4 +1,18 @@
-.terminal {
+.terminal-background {
+	background-color: black;
+	background-image: radial-gradient(
+    		rgba(255, 00, 110, 0.5), black 120%
+	);
+	background-size: 110% 110%; /* Increase the size of the gradient */
+	position:fixed;
+	top:3vh;
+	left:2vw;
+	width: 96vw;
+	height:92vh;
+	z-index: -1;
+}
+
+.terminal-border {
 	animation-duration: 2s, 4s;
 	animation-name: build-terminal, rgb-border;
 	animation-delay: 0s, 2s;
@@ -14,7 +28,7 @@
 	margin: 0px;
 }
 
-#open-terminal {
+#open-terminal-border {
 	animation-duration: 4s;
 	animation-name: rgb-border;
 	animation-delay: 0s;
