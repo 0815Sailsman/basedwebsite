@@ -9,6 +9,7 @@
 
 	<script src="js/type-out.js"></script>
 	<script src="js/random-img.js"></script>
+	<script src="js/terminal.js"></script>
 </head>
 <body>
 	<hr class="terminal-border">
@@ -167,10 +168,12 @@
 <br>
 <span>
 		<div class="typed-out-container">
-		<div class="not-typed-out few-chars">
-	[root@coolserver ~]$> 
+		<div class="not-typed-out few-chars" id="last-to-be-typed">
+			[root@coolserver ~]$<span id="terminal-line"></span>
 		</div>
 		</div>
 </span>
+
+<input id="terminal-input"/>
 </body>
 </html>
