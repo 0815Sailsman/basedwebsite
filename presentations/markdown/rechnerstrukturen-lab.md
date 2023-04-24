@@ -147,3 +147,13 @@ So you check in each for the outside shift and can react accordingly!
 ---
 ## Thats it
 If everything went according to plan you should be done now! :)
+
+---
+
+## Series 2
+---
+Interrupt basiertes auslösen resultiert in direktem Bestehen vom Labor.  
+-> Compiler Exlorer, weils in C geht?
+---
+SysTick benutzen um Uhr zu modellieren.
+***Seite 123 im Datasheet***

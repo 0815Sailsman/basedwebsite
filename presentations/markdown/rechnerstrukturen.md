@@ -141,5 +141,50 @@ Mikrocontroller kann viel mehr als das in 1s. Lieber Interrupt erstellen.
 Enthält 32Bit-Worte auf die Speicheradressen wo die ISRs stehen.  
 Unebkannte ISRs müssen über IMPORT erst importiert werden.  
 Routine muss an richtiger Stelle in Tabelle stehen, sonst crash
+
 ---
 
+## Speicher
+Datenspeicher  
+Hauptspeicher
+"Bios-Speicher" -> Grundfunktionen
+---
+#TODO Speicher Pyramide Klausur (Memory Hierarchy)
+---
+## Speichertypen
+ - RAM (Schreib-Lesespeicher)
+ - ROM (Festwertspeicher)
+ - Flash (Einstellungen)
+---
+### RAM
+Flüchtig  
+Statische RAM (Flip-Flop)
+
+Dynamische RAM (Kondensatoren) (refresh notwendig, leckströme)
+  - EDO-RAM
+  - SDRAM
+  - DDR-SDRAM
+
+Statisch-dynamischer RAM (Kondensatoren im Flip-Flop-Pelz)
+---
+Darstellung von DRAM SIEHE VORLESUNGSFOLIEN  
+Speicherzugriff DRAM auch
+---
+## Berechnung Latenz DRAM
+Faustformel:
+`$$ RamLatency = \frac{CL*2000} {DR} $$`
+
+Relevanz: Bei Desktop Nutzern ist die Latenz, so lange sie sich in einem "normalen" bereich befindet, irrelevant. Bei riesigen Serverfarmen kann das jedoch anders aussehen.
+---
+## Berechnungen DRAM
+`$$ t_{Refresh cycle} = \frac{Takte}{f} $$`
+`$$ t_{Refresh} = t_{Refresh cycle} * Rows $$`
+`$$ Refresh Overhead = \frac{t_{refresh}}{Refresh interval} $$`
+---
+## ROM
+Read only  
+Nicht flüchtig  
+PROM: Einmal programmierbar  
+EPROM: Erasable ROM (UVLicht)  
+EEPROM: Electrically erasable ROM  
+Flash ROM: "Fast nicht flüchtiges RAM"
