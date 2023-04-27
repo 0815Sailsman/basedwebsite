@@ -147,7 +147,72 @@ Möglich Sandardpfad mit schrägstrich auf Kante zu setzen
 
 BPMN Lanes sind effektiv das Gleiche wie AD-Aktivitätsbereiche
 ---
+## Hier BPMN Ereignisse ergänzen
+---
 ## BPMN Nachrichten
 ### TODO Incomplete, ergänzen
-Symbol ist Brief  
+Symbol ist Brief
+
+Modellierung ist nicht so super kritisch: Theoretisch auch Aufgabe stattdessen denkbar.  
+Nur aufpassen dass man nichts doppelt modelliert.
+---
+## BPMN Zeit
+Logik prinzipiell so wie bei Nachrichten, nur mit Uhrsymbol drinnen.  
+Beispiel: Timeout, wiederholende Aufgaben, Timer...
+---
+## Fehler
+Schwerwiegendes Ereignis  
+Entweder Endzustand oder unterbrechendes Fehlerereignis, was  in die Fehlerbehandlung springt.
+---
+## Terminierung
+Ausgemalter Kreis mit Umrandung ist Terminierung des gesamten Programmes.
+Normaler Kreis mit dickem Rand ist Terminierung des aktuellen Pfades.
+---
+## Sprungmarken
+Vergleichbar mit denen von Aktivitätsdiagrammen.
+Nur zur beseseren Übersichtlichkeit, springt vom Fetten Pfeil zum leeren.
+---
+## Ereignisbasierte Gateways
+Komisches Symbol für XOR von Events (todo: bild davon hier einfügen)  
+Gleiches gilt fürs ereignisbasierte AND
+
+Beide werden benutzt um Logik mit Ereignissen gut modelliern zu können: Entweder Ereignis A oder B; Paralllel Event-Starts
+---
+Es ist nicht möglich, das AND an der Stelle wegzulassen, weil sonst jedes Event einzeln stehen würde und beim Aufruf ein extra Token generiert, bzw. einen neuen Prozess startet.
+---
+## Aufgabentypen
+Man kann spezialisieren was eine Aufgabe für einen Typ hat. Dafür Symbol eintragen
+### todo, hier mögliche typen visualisieren
+---
+## Geschäftsregeln
+Komplexe Fallunterscheidungen können als Tabelle modelliert werden. An die entsprechende Aufgabe, in der die FU erfolgen soll, wird das Geschäftsregeln symbol gemacht, und dann kann man in einer or danach oder so mit dem Rückgabewert der Gesch#ftsregel arbeiten.
+---
+## Pools
+Verschiedene Lanes, und ein Übergang von einer Lane zu einer anderen stellt die Kontrollflussübergabe dar, die man dann nicht mehr explizit extra modellieren muss.
+
+Funktioniert trotzdem noch so wie Lanes (bzgl. Aufgabentrennung etc)
+---
+## Pools vs Nachrichten
+Vereinfacht:
+
+Pools ein Thread, eine Aufgabe, die aber verteilt gelöst wird.
+
+Nachrichtenflüsse können Pools überschreiten, Sequenzflüsse nicht. Damit haben Nachrichtenflüsse zwar mehr Möglichkeiten, sind aber "unschöner" und sollte nicht verwendet werden wenn man dort auch Pools nehmen könnte.
+
+---
+
+# Statecharts / Automaten
+---
+###todo beispiel statechart abbilden
+---
+### Aufgaben eines Statecharts
+ - Lebenszyklus Objekt darstellen
+ - Implementierungsbeschreibung
+ - Abstrake Anforderungsbeschreibung
+ - Erlaubte Aufrufreihenfolgen darstellen
+ - Mögliches / Erlaubtes Verhalten darstellen
+ - Bindeglied Zustand- und Verhaltensbeschreibung
+---
+### TODO Automatentheorie ergänzen
+---
 
