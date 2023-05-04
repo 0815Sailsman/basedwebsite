@@ -1,3 +1,11 @@
 .presi-block {
 	border: 1px solid #ff006e;
 }
+
+.complete {
+  list-style: "✅  ";
+}
+
+.incomplete {
+  list-style: "❌  ";
+}
