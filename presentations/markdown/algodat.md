@@ -399,6 +399,10 @@ Rechtestes Element aus Blattebene neue Wurzel
 Mit kleinstem Child tauschen  
 Wiederhole für runtergetauschte Node rekursiv
 ---
+### Re-Heap unsortiertes Feld
+Start bei rechtestem Knoten auf vorletzter Ebene da die darunter Blätter ohne Kinder sind  
+Dann für den re-heap(nicht hoch ziehen sondern nur runter tauschen)
+---
 ## Heap Sort
 ähnlich wie selection sort:  
 Für jedes Element von hinten:  
@@ -412,4 +416,96 @@ Instabil
 
 ---
 
+## Iteratoren
+---
+Einheitliches navigieren durch Listen  
+Klassen die das implementieren bieten ein Objekt an, mit dem man über die Datenstruktur traversieren kann  
+Ist effektiv einfach ein interner Pointer auf die aktuelle Position
+---
+### java.util.Iterator<T> / Iterable
+boolean hasNext()  
+T next()  
+void remove()
+
+Verwendung:  
+Entweder iterator holen und mit while  
+Oder einfach for each auf der Datenstruktur die den Iterator implementiert
+
+---
+
+## Collection Framework
+Viele Implementierungen von Algorithmen und Datenstrukturenl
+---
+java.util.List -> Listen  
+java.util.Set -> Menge  
+java.util.Map -> Verzeichnis
+
+---
+
+## Hashing
+---
+Speicherung der Elemente in Feld  
+Hashfunktione h(e) bestimmt die Position des Elements im Feld  
+Hashfunktion sollte kollisionsfrei/-arm verteilen
+---
+## Hashfunktionen
+Vorlesung einfache Varianten in der Form i mod N  
+Für Datentypen != integer, Rückführung auf Integer  
+-> Ascii Wert, Mantisse und Exponentn addieren...
+---
+### Anforderungen
+Gut streuen  
+Effizient berechenbar  
+Gleiche Objekte gleicher Hash  
+deterministisch
+---
+## Kollisionsstrategie
+Verkettung der Überläufer bei Kollision  
+-> Einträge sind immer linked Lists und man hängt kollidierendes einfach an
+
+
+Sondieren(Suchen einer alternativen Position)  
+-> wenn T[h(e)] besetzt -> T[h(e)+1] oder statt 1 Konstante c  
+-> oder auch quadratisch weitergehen
+---
+Suche nach Element muss dementsprechende angepasst werden:  
+z.b. bei sondieren bis erstes mal null suchen
+---
+## Aufwand
+Bei geringer Kollisionswahrscheinlichkeit O(1)  
+Füllgrad über 80% -> Einfüge/Suchverhalten wird dramatisch schlechter
+
+Füllgrad a = m/N  
+m Anzahl Elemente  
+N Anzahl Buckets
+
+Aufwand abhängig vom Füllgrad
+---
+## HashMaps in Java
+Ehem. HashTable, aktueller: HashMaps  
+
+---
+
+## Graphen
+---
+Netzwerk aus Knoten und Kanten  
+vielfältige Einsätze  
+Bäume und Listen sind spezielle Graphen
+---
+## Ungerichteter Graph
+endliche Menge Knoten und Kanten(2-elementige Teilmengen von V)  
+Knoten einer Kante heißten Endpunkte  
+
+Keine Pfeile, Mehrfachkanten, Schleifen
+---
+## Gerichtete Graphen
+Jetzt ist die Teilmenge für die Kanten geordnet (Reihenfolge relevant)  
+Jetzt gibts Pfeile  
+Außerdem sind dann auch Reflexive Kanten möglich
+---
+## Gewichtete Graphen
+Kanten können ein Gewicht bekommen  
+Anwendung: Kürzester Weg etc.
+---
+## Realisierung von Graphen
 
