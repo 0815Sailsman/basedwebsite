@@ -188,3 +188,40 @@ PROM: Einmal programmierbar
 EPROM: Erasable ROM (UVLicht)  
 EEPROM: Electrically erasable ROM  
 Flash ROM: "Fast nicht flüchtiges RAM"
+---
+### TODO Klausur Refresh-Overhead Zeug DRAM rechnen können
+### und Statischer RAM IMMER FLIP FLOPS (wissen woraus welcher speicher ist)
+### allgemein folie speicheigenschaften kennen
+---
+## EPROM
+Wird durch UV-Licht ge-wiped  
+---
+## Flash ROM (KLAUSURRELEVANT)
+Speichermedium: Floating Gate Zelle  
+Schreib und löschbar  
+Begrenzte Lebensdauer  
+günstig aber langsame
+
+---
+
+## Verteilte Systeme
+---
+## verschiedene definitionen übernehmen
+---
+Treten häufig auf in:
+ - Finanzbereich
+ - Informationsdienste
+ - Entertainment
+ - Health
+ - Bildung
+ - Logistik
+---
+## Heterogene vs homogene Systeme
+### KLAUSUR-RELEVANT  
+Alles eine Art von System (homogen)  
+Unterschiedliche arten, untercheidliche software etc (heterogene)
+---
+### Transparenzzeug
+aus folien übernehmen
+---
+
