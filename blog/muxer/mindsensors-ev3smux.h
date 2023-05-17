@@ -123,7 +123,7 @@ bool initSensor(tMSEV3Ptr msev3Ptr, tMUXSensor muxsensor, tEV3SensorTypeMode typ
 
 /**
  * Read all the sensor's data
- *
+ * 
  * @param msev3Ptr pointer to the sensor's data struct
  * @return true if no error occured, false if it did
  */
