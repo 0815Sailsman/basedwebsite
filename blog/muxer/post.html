@@ -24,13 +24,13 @@
 		<p>
 		The <a href="http://www.mindsensors.com/ev3-and-nxt/23-ev3-sensor-multiplexer-for-ev3-or-nxt">EV3 sensor multiplexer by mindsensors</a> is a relatively expensive, but seemingly reliable component for big mindstorms projects.<br>
 		But because the general documentation regarding RobotC is not particulary good, and since the Multiplexer seems to be mainly designed to be used in the official EV3 programming software (and its official documentation looks <a href="EV3SensorMUX-User-Guide.pdf">"interesting"</a>) it can be hard to get a grip on the usage of this part.<br>
-		The goal of this post is to provide a small but comprehensible guide about the usage of this sensor in RobotC.<br><br>
+		The goal of this post is to provide a small but comprehensible guide about the usage of this component in RobotC.<br><br>
 		Also, because this is intended to be used by younger students, the code examples are deliberatly kept as easy and understandable as possible.
 		</p>
 		<hr>
 		<h3>Setting up your IDE</h3>
 		<p>
-		To start of, open the <i>Motors and Sensors Setup</i> window of RobotC and specify, that the port where your Multiplexer is connected to is of type <i>generic I2C</i>.<br>
+		To start of, open the <i>Motors and Sensors Setup</i> window of RobotC and specify, that the port where your Multiplexer is connected to is of type <i>Generic I2C</i>.<br>
 		That should result in a line similar to:</p>
 		<pre><code class="c">#pragma config(Sensor, S1, , sensorEV3_GenericI2C)</code></pre>
 		<p>
@@ -94,7 +94,7 @@ readSensor(&muxer1[1]);
 readSensor(&muxer1[2]);
 		</code></pre>
 		<p>
-		This returns a boolean, whether or not the operation was successfull, so feel free to include that in your code.<br><br>
+		This returns a boolean, whether or not the operation was successful, so feel free to include that in your code.<br><br>
 		With that, your multiplexer now holds the latest readings of the updated sensors. To actually grab the values, the mutliplexer provides different attributes for every possible value to be read.<br><br>
 		Depending on what type of sensor you connected and what mode you selected, you can choose from:
 		<ul>
@@ -126,7 +126,7 @@ short color2 = muxer1[2].color;
 		<p>
 		If you already have a basic understanding of present concepts in programming the above examples might seem trivial to you. But for people who never heard about OOP, pointers or header files in their life, this might already be scary, I know that too good from personal experience.<br>
 		That's why I developed a very basic but natural "wrapper" for the everyday use cases for the sensor-multiplexer: easymuxer.<br><br>
-		The library's scope is, to offer an even easier approach to the mutliplexer, needing only few lines of setup and a single line for reading the values.<br><br>
+		The library's scope is, to offer an even easier approach to the multiplexer, needing only few lines of setup and a single line for reading the values.<br><br>
 		To use the library, you still need to include the mindsensors header file as shown above. In addition to it, you need to include <a href="easymuxer.h">easymuxer.h</a>.<br>
 		Either put it in the include directory of the driver suite, or go back to the settings window from earlier and tell the compiler where to find it.<br><br>
 		Include it like so:<br></p>

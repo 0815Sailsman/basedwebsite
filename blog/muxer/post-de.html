@@ -16,16 +16,16 @@
 			<a href="../blog.html">Blog</a>
 		</span>
 		<h1>EasyMuxer RobotC</h1>
-		<aside>Aufsetzen des mindsensors sensor multiplexer und Programmierung eines natural language Wrappers</aside>
+		<aside>Aufsetzen des Mindsensors Sensor Multiplexers und Programmierung eines natural language Wrappers</aside>
 		<hr>
 		<a href="post.html">Dieser Post ist auch auf Englisch verfügbar 🇺🇸</a><br>
 
 		<aside>Übersetzt von ChatGPT weil ich faul bin und erst auf englisch geschrieben habe. Jegliche Vergewaltigungen der deutschen Sprache in diesem Text sind auf OpenAI zurückzuführen!</aside>
 		<h3>Über</h3>
 		<p>
-		Der <a href="http://www.mindsensors.com/ev3-and-nxt/23-ev3-sensor-multiplexer-for-ev3-or-nxt">EV3 Sensor-Multiplexer von mindsensors</a> ist eine relativ teure, aber relativ zuverlässige Komponente für größere Mindstorms-Projekte.<br>
+		Der <a href="http://www.mindsensors.com/ev3-and-nxt/23-ev3-sensor-multiplexer-for-ev3-or-nxt">EV3 Sensor-Multiplexer von Mindsensors</a> ist eine relativ teure, aber relativ zuverlässige Komponente für größere Mindstorms-Projekte.<br>
 		Da die allgemeine Dokumentation zu RobotC nicht besonders gut ist und der Multiplexer hauptsächlich für die Verwendung in der offiziellen EV3-Programmiersoftware entwickelt zu sein scheint (und die offizielle Dokumentation recht <a href="EV3SensorMUX-User-Guide.pdf">"interessant"</a> aussieht), kann es schwierig sein, die Verwendung dieser Komponente zu verstehen.<br>
-		Das Ziel dieses Posts ist es, einen kleinen, aber verständlichen Leitfaden zur Verwendung dieses Sensors in RobotC bereitzustellen.<br><br>
+		Das Ziel dieses Posts ist es, einen kleinen, aber verständlichen Leitfaden zur Verwendung dieses Bauteils in RobotC bereitzustellen.<br><br>
 		Außerdem sind die Codebeispiele absichtlich einfach und verständlich gehalten, da sie auch zugänglich für jüngere Schüler sein sollen.
 		</p>
 		<hr>
@@ -35,9 +35,9 @@
 		Das sollte zu einer solchen Zeile führen:</p>
 		<pre><code class="c">#pragma config(Sensor, S1, , sensorEV3_GenericI2C)</code></pre>
 		<p>
-		Nun müssen wir die erforderlichen Treiber einbinden, um die Drittanbieter-Hardware verwenden zu können. Glücklicherweise hat <a href="https://github.com/botbench">Xander Soldaat</a> bereits den großteil der Arbeit für uns erledigt und die <a href="https://github.com/botbench/robotcdriversuite">RobotC Driversuite</a> geschrieben.<br>
+		Nun müssen wir die erforderlichen Treiber einbinden, um die Drittanbieter-Hardware verwenden zu können. Glücklicherweise hat <a href="https://github.com/botbench">Xander Soldaat</a> bereits den Großteil der Arbeit für uns erledigt und die <a href="https://github.com/botbench/robotcdriversuite">RobotC Driversuite</a> geschrieben.<br>
 		Klone das Git-Repository oder lade einfach das Zip-Archiv von hier <a href="robotcdriversuite-master.zip">herunter</a>.<br>
-		Entpacke alles und speichere es an einem Ort, an den du dich erinnern können.<br><br>
+		Entpacke alles und speichere es an einem angebrachten Ort.<br><br>
 		Nun geh in der RobotC-IDE zu<br><i>View -> Preferences -> Detailed Preferences -> Compiler -> Include-Directories</i><br> (oder so) und füge das Unterverzeichnis <i>include</i> der gerade heruntergeladenen Driversuite hinzu. Es enthält einige erforderliche Bibliotheken.<br><br>
 		Füge dann die ev3smux-Bibliothek im Code wie folgt ein:<br>
 		</p>
@@ -89,9 +89,9 @@ initSensor(&muxer1[2], msensor_S1_3, muxer1Modes[2]);
 		Aber das ist nicht so einfach, wie es klingt (aber immernoch einfach ;D), denn der Multiplexer muss manuell dazu aufgefordert werden, neue Sensordaten zu erfassen. Sobald du dieses Konzept jedoch verstanden hast, wird der Rest trivial.<br><br>
 		Um den Multiplexer dazu zu bringen, seine Sensorwerte zu aktualisieren, verwende einfach:<br></p>
 		<pre><code class="c">
-		readSensor(&muxer1[0]);
-		readSensor(&muxer1[1]);
-		readSensor(&muxer1[2]);
+readSensor(&muxer1[0]);
+readSensor(&muxer1[1]);
+readSensor(&muxer1[2]);
 		</code></pre>
 		<p>
 		Dies liefert außerdem einen booleschen Wert zurück, der angibt, ob die Operation erfolgreich war. Verwende das gerne in deinem Code weiter.<br><br>
@@ -113,13 +113,13 @@ initSensor(&muxer1[2], msensor_S1_3, muxer1Modes[2]);
 		Auch hier findest du weitere Details in der <a href="mindsensors-ev3smux.h">Header-Datei</a>. Dort kannst du auch sehen, dass noch weitere Attribute wie die Rohdaten des I2C verfügbar sind, falls du daran interessiert bist.<br><br>
 		Nehmen wir nun an, du hast wie in den vorherigen Beispielen 3 Farbsensoren angeschlossen. Um ihre Messwerte zu erhalten, würdest du Folgendes tun:<br></p>
 		<pre><code class="c">
-		short color0 = muxer1[0].color;
-		short color1 = muxer1[1].color;
-		short color2 = muxer1[2].color;
+short color0 = muxer1[0].color;
+short color1 = muxer1[1].color;
+short color2 = muxer1[2].color;
 		</code></pre>
 		<p>
-		Ehrlich gesagt weiß ich nicht genau, welche Zahl welcher Farbe entspricht, aber es ist wahrscheinlich etwas, das mit den Standardfarben von RobotC übereinstimmt. Du kannst es gerne ausprobieren und mir Bescheid geben!<br><br>
-		Das ist die grundlegende Funktionalität des Multiplexers. Xander hat auch ein etwas fortgeschritteneres Beispiel in seinem Repository. Schau es dir dort an oder direkt hier <a href="mindsensors-ev3smux-test1.c">hier</a>.
+		Ehrlich gesagt weiß ich nicht genau, welcher Rückgabewert hier welcher Farbe entspricht, aber es ist wahrscheinlich etwas, das mit den Standardfarben von RobotC übereinstimmt. Du kannst es gerne ausprobieren und mir Bescheid geben!<br><br>
+		Das ist die grundlegende Funktionalität des Multiplexers. Xander hat auch ein etwas fortgeschritteneres Beispiel in seinem Repository. Schau es dir dort an oder direkt <a href="mindsensors-ev3smux-test1.c">hier</a>.
 		</p>
 		<hr>
 		<h3>Vereinfachung der Benutzung mit easymuxer.h</h3>
@@ -128,31 +128,31 @@ initSensor(&muxer1[2], msensor_S1_3, muxer1Modes[2]);
 		Aus diesem Grund habe ich einen sehr einfachen, aber natürlichen "Wrapper" für den alltäglichen Einsatz des Sensor-Multiplexers entwickelt: easymuxer.<br><br>
 		Der Zweck der Bibliothek besteht darin, einen noch einfacheren Ansatz für den Multiplexer zu bieten, der nur wenige Zeilen Setup und eine einzelne Zeile zum Auslesen der Werte erfordert.<br><br>
 		Um die Bibliothek zu verwenden, musst du immer noch die mindsensors Header-Datei wie oben gezeigt einbinden. Zusätzlich dazu musst du <a href="easymuxer.h">easymuxer.h</a> einbinden.<br>
-		Entweder lege es im Include-Verzeichnis der robotcdriversuite ab oder gehe zurück zum Einstellungsfenster von vorhin und gib dem Compiler den Pfad dazu an, wo es zu finden ist.<br><br>
+		Entweder legst du es im Include-Verzeichnis der robotcdriversuite ab oder du gehst zurück zum Einstellungsfenster von vorhin und gibst dem Compiler den Pfad dazu an, wo es zu finden ist.<br><br>
 		Füge es wie folgt ein:<br></p>
 		<pre><code class="c">#include "easymuxer.h"</code></pre>
 		<p>
 		Die Deklaration eines Multiplexers bleibt genau gleich, <br></p>
 		<pre><code class="c" style="overflow:scroll">
-		tMSEV3 muxer1[3];
-		tEV3SensorTypeMode muxer1Modes[3] = {
-			colorMeasureColor,
-			colorMeasureColor,
-			colorMeasureColor
-		};
+tMSEV3 muxer1[3];
+tEV3SensorTypeMode muxer1Modes[3] = {
+	colorMeasureColor,
+	colorMeasureColor,
+	colorMeasureColor
+};
 		</code></pre>
 		<p>
 		aber die Initialisierung ist jetzt viel einfacher. Verwende einfach:<br></p>
 		<pre><code class="c" style="overflow:scroll">
-		initMuxerWithModes(muxer1, muxer1Modes);
+initMuxerWithModes(muxer1, muxer1Modes);
 		</code></pre>
 		<p>
 		innerhalb des "Setup"-Teils deiner <i>task main</i>.<br><br>
 		Das Abrufen der Sensordaten ist auch viel einfacher. <a href="easymuxer.h">easymuxer.h</a> bietet Funktionen zum direkten Auslesen von Daten von Sensoren auf deinem Multiplexer. In unserem Fall, mit 3 Farbsensoren, würdest du einfach folgendes benötigen:<br></p>
 		<pre><code class="c" style="overflow:scroll">
-		short color0 = getMuxColor(muxer1, 0);
-		short color1 = getMuxColor(muxer1, 1);
-		short color2 = getMuxColor(muxer1, 2);
+short color0 = getMuxColor(muxer1, 0);
+short color1 = getMuxColor(muxer1, 1);
+short color2 = getMuxColor(muxer1, 2);
 		</code></pre>
 		<p>
 		Diese Funktionen lassen die Sensoren intern neue Werte messen, daher ist es nicht notwendig, ihnen vor jedem Auslesen manuell zu sagen, dass sie dies tun sollen. Juhu!<br><br>
@@ -173,7 +173,7 @@ initSensor(&muxer1[2], msensor_S1_3, muxer1Modes[2]);
 #pragma config(Sensor, S1, , sensorEV3_GenericI2C)
 
 #include "mindsensors-ev3smux.h"
-#include "easymuxer.h";
+#include "easymuxer.h"
 
 tMSEV3 muxer1[3];
 tEV3SensorTypeMode muxer1Modes[3] = {
