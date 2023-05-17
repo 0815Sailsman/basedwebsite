@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>easymuxer</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="styles.css" rel="stylesheet">
+		<link rel="stylesheet" href="dracula.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+		<script>hljs.highlightAll();</script>
+	</head>
+	<body>
+		<span class="link-header">
+			<a href="../../uni-notes.html">Uni Stuff</a>
+			<a href="../../index.html">Home</a>
+			<a href="../../playground.html">Playground</a>
+		</span>
+		<h1>EasyMuxer RobotC</h1>
+		<aside>Setting up the mindsensors sensor multiplexer and building an easy to use wrapper for it</aside>
+		<hr>
+		<a href="post-german.html">This post is also available in german 🇩🇪</a> (Not yet), still TODO
+		<br>
+		<h3>About</h3>
+		<p>
+		The <a href="http://www.mindsensors.com/ev3-and-nxt/23-ev3-sensor-multiplexer-for-ev3-or-nxt">EV3 sensor multiplexer by mindsensors</a> is a relatively expensive, but seemingly reliable component for big mindstorms projects.<br>
+		But because the general documentation regarding RobotC is not particulary good, and since the Multiplexer seems to be mainly designed to be used in the official EV3 programming software (and its official documentation looks <a href="EV3SensorMUX-User-Guide.pdf">"interesting"</a>) it can be hard to get a grip on the usage of this part.<br>
+		The goal of this post is to provide a small but comprehensible guide about the usage of this sensor in RobotC.<br><br>
+		Also, because this is intended to be used by younger students, the code examples are deliberatly kept as easy and understandable as possible.
+		</p>
+		<hr>
+		<h3>Setting up your IDE</h3>
+		<p>
+		To start of, open the <i>Motors and Sensors Setup</i> window of RobotC and specify, that the port where your Multiplexer is connected to is of type <i>generic I2C</i>.<br>
+		That should result in a line similar to:</p>
+		<pre><code class="c">#pragma config(Sensor, S1, , sensorEV3_GenericI2C)</code></pre>
+		<p>
+		at the top of your program.<br><br>
+		Now, we need to include the necessary drivers to use the third-party hardware. Luckily, <a href="https://github.com/botbench">Xander Soldaat</a> already did all the hard work for us and wrote the <a href="https://github.com/botbench/robotcdriversuite">RobotC Driversuite</a>.<br>
+		Clone the git repository or just <a href="robotcdriversuite-master.zip">download</a> the zip archive from here.<br>
+		Extract everything and store it somewhere you remember.<br><br>
+		Now, inside the RobotC IDE, go to<br><i>View -> Preferences -> Detailed Preferences -> Compiler -> Include Directories</i><br> (or something similar) and include the <i>include</i> subfolder of the driversuite you just downloaded. It contains some necessary libraries.<br><br>
+		Then, include the ev3smux library in your code like so:<br>
+		</p>
+		<pre><code class="c">#include "mindsensors-ev3smux.h"</code></pre>
+		<hr>
+		<h3>Initiating a mulitplexer</h3>
+		<p>
+		That's the boring part done! Now, let's get to coding:<br><br>
+		To declare and prepare a multiplexer for initialization, you basically need 2 lines:<br></p>
+		<pre><code class="c">
+tMSEV3 muxer1[3];
+tEV3SensorTypeMode muxer1Modes[3] = {
+	colorMeasureColor,
+	colorMeasureColor,
+	colorMeasureColor
+};
+		</code></pre>
+		<p>
+		The available modes are:
+		<ul>
+<li>colorReflectedLight</li>
+<li>colorAmbientLight</li>
+<li>colorMeasureColor</li>
+<li>gyroAngle</li>
+<li>gyroRate</li>
+<li>infraRedProximity</li>
+<li>infraRedBeacon</li>
+<li>infraRedRemote</li>
+<li>sonarCM</li>
+<li>sonarInches</li>
+<li>sonarPresence</li>
+<li>touchStateBump</li>
+		</ul>
+		See the <a href="mindsensors-ev3smux.h">header file</a> for more details.<br><br>
+		Now, to actually initialize the sensor you need something like this in your task main:<br></p>
+		<pre><code class="c">
+initSensor(&muxer1[0], msensor_S1_1, muxer1Modes[0]);
+initSensor(&muxer1[1], msensor_S1_2, muxer1Modes[1]);
+initSensor(&muxer1[2], msensor_S1_3, muxer1Modes[2]);
+		</code></pre>
+		<p>
+		Most of that is pretty self-explanatory. I didn't find a reference to what the second argument really is, but since the name is also pretty self-explanatory I did not dig deeper here.<br><br>
+		<em>NOTE:</em>I will later introduce a wrapper for this initialization and the other stuff, to make it easier and fool-proof to use and to make it match the "natural language" style of RobotC.
+		</p>
+		<hr>
+		<h3>Using the multiplexer</h3>
+		<p>
+		So: We successfully set up and initialized our first multiplexer. Great! Now its time to use it.<br><br>
+		But this isn't as simple as it sounds (though its still simple ;D), because the multiplexer needs to be manually told to measure new sensor data. But once you understand that concept, the rest becomes trivial.<br><br>
+		To make the multiplexer update its sensor-values, simply use:<br></p>
+		<pre><code class="c">
+readSensor(&muxer1[0]);
+readSensor(&muxer1[1]);
+readSensor(&muxer1[2]);
+		</code></pre>
+		<p>
+		This returns a boolean, whether or not the operation was successfull, so feel free to include that in your code.<br><br>
+		With that, your multiplexer now holds the latest readings of the updated sensors. To actually grab the values, the mutliplexer provides different attributes for every possible value to be read.<br><br>
+		Depending on what type of sensor you connected and what mode you selected, you can choose from:
+		<ul>
+			<li>bool touch</li>
+			<li>short bumpCount</li>
+			<li>short light</li>
+			<li>short color</li>
+			<li>short angle</li>
+			<li>short rate</li>
+			<li>short distance</li>
+			<li>short beaconProx[4]</li>
+			<li>short beaconHeading[4]</li>
+			<li>short remote[4]</li>
+			<li>bool presence</li>
+		</ul>
+		Again, see the <a href="mindsensors-ev3smux.h">header file</a> for more details. There you can also see, that it provides even more attributes like the raw I2C data if you are interested in that.<br><br>
+		Now, let's say you connected 3 color sensors like I have in the previous examples. To get their readings you would do:<br></p>
+		<pre><code class="c">
+short color0 = muxer1[0].color;
+short color1 = muxer1[1].color;
+short color2 = muxer1[2].color;
+		</code></pre>
+		<p>
+		I honestly dont know what number corresponds to what color, but its probably something aligned with the default robotC colors. Feel free to test it out and tell me!<br><br>
+		That is the basic functionality of the multiplexer. Xander also has a slightly more advanced example in his repository. Check it out there or take a look <a href="mindsensors-ev3smux-test1.c">here</a>.
+		</p>
+		<hr>
+		<h3>Simplifying the usage with easymuxer.h</h3>
+		<p>
+		If you already have a basic understanding of present concepts in programming the above examples might seem trivial to you. But for people who never heard about OOP, pointers or header files in their life, this might already be scary, I know that too good from personal experience.<br>
+		That's why I developed a very basic but natural "wrapper" for the everyday use cases for the sensor-multiplexer: easymuxer.<br><br>
+		The library's scope is, to offer an even easier approach to the mutliplexer, needing only few lines of setup and a single line for reading the values.<br><br>
+		To use the library, you still need to include the mindsensors header file as shown above. In addition to it, you need to include <a href="easymuxer.h">easymuxer.h</a>.<br>
+		Either put it in the include directory of the driver suite, or go back to the settings window from earlier and tell the compiler where to find it.<br><br>
+		Include it like so:<br></p>
+		<pre><code class="c">#include "easymuxer.h"</code></pre>
+		<p>
+		Declaring a multiplexer stays exactly the same, <br></p>
+		<pre><code class="c" style="overflow:scroll">
+tMSEV3 muxer1[3];
+tEV3SensorTypeMode muxer1Modes[3] = {
+	colorMeasureColor,
+	colorMeasureColor,
+	colorMeasureColor
+};
+		</code></pre>
+		<p>
+		but initializing is alot easier now. Just use:<br></p>
+		<pre><code class="c" style="overflow:scroll">
+initMuxerWithModes(muxer1, muxer1Modes);
+		</code></pre>
+		<p>
+		inside the "setup" part of your task main.<br><br>
+		Getting the sensor data also is alot easier. <a href="easymuxer.h">easymuxer.h</a> provides functions, to directly read data from a sensor on your multiplexer. In our case, with 3 color sensors, you would just need:<br></p>
+		<pre><code class="c" style="overflow:scroll">
+short color0 = getMuxColor(muxer1, 0);
+short color1 = getMuxColor(muxer1, 1);
+short color2 = getMuxColor(muxer1, 2);
+		</code></pre>
+		<p>
+		These functions internally make the sensors measure new values, so no need to manually tell them to do so before each read. Yay!<br><br>
+		The available functions are:
+		<ul>
+			<li>short getMuxColor(...)</li>
+			<li>short getMuxReflectedLight(...)</li>
+			<li>short getMuxAmbientLight(...)</li>
+			<li>short getMuxGyroAngle(...)</li>
+			<li>short getMuxGyroRate(...)</li>
+			<li>bool getMuxTouchPressed(...)</li>
+			<li>short getMuxSonarDistance(...)</li>
+			<li>bool getMuxSonarPresence(...)</li>
+		</ul>
+		These should cover the basic use cases.<br><br>
+		A simple <a href="easymuxer-example.c">example</a> using this library might look like this (download below):<br></p>
+		<pre><code class="c" style="overflow:scroll">
+#pragma config(Sensor, S1, , sensorEV3_GenericI2C)
+
+#include "mindsensors-ev3smux.h"
+#include "easymuxer.h";
+
+tMSEV3 muxer1[3];
+tEV3SensorTypeMode muxer1Modes[3] = {
+	colorMeasureColor, colorMeasureColor, colorMeasureColor
+};
+
+void example() {
+	int color0 = getMuxColor(muxer1, 0);
+	int color1 = getMuxColor(muxer1, 1);
+	int color2 = getMuxColor(muxer1, 2);
+
+	displayTextLine(1*0 + 1, "Color: %d", color0);
+	displayTextLine(1*1 + 1, "Color: %d", color1);
+	displayTextLine(1*2 + 1, "Color: %d", color2);
+}
+
+task main() {
+  displayCenteredTextLine(0, "Mindsensors");
+  displayCenteredBigTextLine(1, "EV3 SMUX");
+  displayCenteredTextLine(3, "Test 1");
+  sleep(2000);
+  eraseDisplay();
+
+  initMuxerWithModes(muxer1, muxer1Modes);
+
+  while (true) {
+	example();
+  	sleep(100);
+  }
+}
+		</code></pre>
+		<p>
+			Download section:
+			<ul>
+				<li><a href="easymuxer-example.c">Example</a></li>
+				<li><a href="easymuxer.h">easymuxer.h</a></li>
+				<li><a href="robotcdriversuite-master.zip">robotcdriversuite.zip</a></li>
+				<li><a href="mindsensors-ev3smux-test1.c">official example</a></li>
+				<li><a href="mindsensors-ev3smux.h">ev3smux.h</a></li>
+			</ul>
+		</p>
+	</body>
+</html>
