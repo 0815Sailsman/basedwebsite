@@ -1,0 +1,19 @@
+assembler stuff
+endians
+architektur vorgeben, namen ausgegraut, benennen
+instruktionsbus von datenbus trennen können, aus grafiken deutlich erkennbar
+merkmale, konzepte von universalrechner, von neumann / harvard "welche merkmale hat die von neumann architektur" -> sample multiple choice
+fetch decode read execute write Exekutionszyklus, steuerwerk verschiedene aufgaben, darstellung als grafik und dann muss man sagen was das ist
+in welchem schritt wird der programm counter inkrementiert (im fetch)
+mooresches gesetz, andere
+bit addition, komplemente, darstellungen, flags, speicherpyramide(n) (-geschwindigkeiten)
+TGI rechung wiederholen
+direktive vs befehl (siehe foliensatz)
+code vs datenspeicher vs rest
+interrupts rauf und runter..., erklärung beispiel, vergleich polling, ivc, 
+pipelining, predictions, hazards
+speichertypen etc, hitrate cache,was ist das, kleinstes element flash speicher (floating gate), dram, sram, sdram, analog/digitalwandlung
+isa, was das, flynns taxonomy,
+risc vs cisc
+condition flags abkürzungen assembler kennen
+
