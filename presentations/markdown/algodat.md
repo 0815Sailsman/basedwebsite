@@ -322,7 +322,8 @@ Deswegen realisierung des 2-3-4 Baums als Rot-Schwarz Baum, der einfacher Binär
  - Für jeden Knoten: Pfad zu einem Blatt gleiche Anzahl schwarze Knoten
 ---
 Suchen und Traversieren geht alles direkt, weil ja "normaler" Binärbaum  
-Einfügen wird als Top-Down realisiert, um rot/schwarz Eigenschaften beizubehalten---
+Einfügen wird als Top-Down realisiert, um rot/schwarz Eigenschaften beizubehalten
+---
 ## Einfügen in rot-schwarz Baum
 nichtrekursiv einfügeposition suchen  
 alle 4er knoten splitten:

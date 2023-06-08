@@ -25,6 +25,159 @@ Anstatt die Frequenz zu erhöhen (Powerwall) einfach mehrere, parallele Kerne!
 Data-level parallelism (DLP): Mehrere Datenobjekte auf denen gleichzeitig gearbeitet werden kann.
 
 Task/Thread-level parallelism (TLP): Mehrere "Aufgaben", die unabhängig voneinander und größtenteils parallel ablaufen.
+---
+### Verschiedene Rechnerstrukturen
+SISD (Single Instruction stream, Single Data stream)  
+SIMD (Single Instruction stream, Multiple Data stream)  
+MISD (Multiple Instruction stream, Single Data stream)  
+MIMD (Multiple Insutrction stream, Single Data stream)
+---
+### SISD
+ - "Standard" in Desktops und Laptops
+---
+### SIMD
+ - Videobearbeitung o.ä.
+---
+### MISD
+ - Anwendungen sind Schachcomputer oder sophisticated Antiviren-Programme / Threat Analysis
+---
+### MIMD
+ - Effektiv einfach mehrere parallel Prozessoren.
+ - Anwendungen sind Rechenzentren, Cloud Provider
+
+---
+
+## Performance
+---
+### Metriken
+Bandbreite: Kann ganz gut wörtlich genommen werden.  
+    -> Wie viele Sitze hat ein Hörsaal
+
+Durchsatz: Tatsächliches Maß an bits über Zeit  
+Hängt oft von vielen anderen Faktoren ab und weicht von Bandbreite ab  
+    -> Wie viele Studis können in 10h unterrichtet werden
+---
+### Computer Clock
+Selbsterklärend... Clock Rate ist inverses von Clock cycle time(Phasendauer)  
+
+1/5ns = 200 MHz  
+1 / Clock cycle time = Clock Rate
+
+ACHTUNG: n cycles != c instructions
+Unterschiedliche Instruktionen benötigen unterschiedlich viele Cycles
+---
+### Execution Time
+Auch wieder selbsterklärend: Actual Zeit für Programm
+Cycles * cycle time = execution time  
+oder  
+cycles / clock rate = execution time
+---
+### Cycles per instruction
+Das Maß, wie viele Instruktionen denn jetzt eine bestimmte Instruktion benötigt.  
+Weiß gar nicht was man dazu noch sagen muss xD
+---
+### Dynamic Power
+Aktives Nutzen von Transistoren  
+`$$ P_{dynamic} \~{} \ \  N*C*V^2*f*A $$`
+N: Anzahl Transistoren  
+C: Kapazität pro Transistor  
+V: Spannung  
+f: Transistorswitching frequenz (~clock freq)  
+A: active factor(?)
+---
+### Static Power
+Leckströme etc selbst bei inaktiven  
+`$$ P_{static} \~{} \ \  N*V*e^{-V_{t}} $$`
+N: Anzahl Transistoren  
+V: Spannung  
+Vt: Grenzspannung ab der Transitoren leiten
+---
+### Power example
+100% utilization -> 100W with 20% of that being static/leakage.  
+How much total power at 50% utilization?
+
+Ptotal100 = 100W
+Pdynamic100 = 100W - 20W = 80W  
+Pstatic = 20W  
+Pdynamic50 = 80W / 2 = 40W
+Ptotal50 = Pdynamic50 + pstatic = 40W + 20W = 60W
+---
+### Reliability
+2 states of a system:  
+ - Service accomplishment
+ - Service interruption
+
+Transitions between states with "failure" or "restoration"
+---
+### Definitions
+Mean time to failure (MTTF) = 1 / FIT  
+FIT (Failures in time) = 1 / MTTF  
+Mean time to repair (MTTR)  
+Mean time between failures(MTBF) = MTTF + MTTR  
+Availability = MTTF / (MTTF + MTTR) as %
+---
+
+## Instruction Level Parallelism
+Versuchen, möglichst viele Instruktionen gleichzeitig auszuführen  
+Möglich, wenn aufeinanderfolgende Instruktionen nicht voneinander abhängen.  
+Dann kann z.B. die Reihenfolge geändert werden
+
+---
+
+## Memory Hierarchy
+---
+ 1. Register(Flip-Flops)
+ 2. Cache(SRAM)
+ 3. Hauptspeicher(DRAM)
+ 4. Sekundärspeicher(HDD, SSD)
+
+kleiner zahl = schneller, kleiner, teurer, viele  
+größere zahl = langsamer, größer, billiger, wenige
+---
+## Memory Interfacing
+Different memory layers m1..3, each with access time T1..3 and Hit Ratio H1..2
+`$$ T_{avg} = H_1T_1 + ((1-H_1) * H_2)T_2 + ((1-H_1)*(1-H_2))T_3 $$`  
+
+---
+
+## Computer Level Hierarchy
+---
+### von-Neumann Rechner
+ - abstrakte Maschine die re-Programmierbar ist
+ - Daten und Instruktionen teilen sich Speicher
+ - alle aktuellen Computer basieren auf diesem Prinzip (aber diverse Varianten)
+ - fetch-decode-execute cycle
+---
+### Struktur
+CPU:  
+ - ALU
+ - Control Unit
+ - Register
+Interfaced IO  
+Interfaced Main Memory
+
+von Neumann execution cycle: Fetch-Decode-Read-Execute-Write(-instruction counter++)
+---
+### Entwicklung
+Moores Law: Anzahl Transistoren verdoppelt sich alle ~2 Jahre  
+Rocks Law: Kosten der Herstellungsmaschinen verdoppelt sich auch Dann
+---
+### Virtual machine layers
+ 6. User
+ 5. High Level Languages
+ 4. Assembly
+ 3. Operating System
+ 2. Machine (ISA)
+ 1. Control (ALU stuff)
+ 0. Digital Logic (transistors)
+---
+### Caches
+L1 Cache: Häufigste Befehle und Daten  
+L2 Cache: Schöner für viele Programme gleichzeitig  
+L3 Cache: Weniger Cache, mehr Kohärenz, vereinfacht Datenaustausch zwischen Kernen  
+
+---
+## Vereinfachter Rechner
 
 ---
 
