@@ -1,0 +1,29 @@
+body {
+	margin:40px auto;
+	max-width:800px;
+	color:#d9d9d9;
+	background:black;
+	padding:0 10px;
+	font: 18px/1.6 Inconsolata, monospace;
+	margin-top: 60px;
+}
+
+h1,h2,h3 {
+	line-height:1.2
+}
+
+a {
+	color: #00a2e7;
+}
+
+hr {
+	border: 1px solid #ff006e;
+	width: 98%;
+}
+
+.link-header {
+	font-size: 20px;
+	display:flex;
+	justify-content: space-evenly;
+}
+
