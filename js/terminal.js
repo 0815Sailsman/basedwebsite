@@ -18,7 +18,9 @@ observer.observe(document.getElementById('last-to-be-typed'), {
 
 function selectInput () {
   var input = document.getElementById('terminal-input');
-  input.focus();
+  input.focus({
+	preventScroll: true
+  });
   input.select();
 	input.addEventListener("input", displayInput, false);
 	input.addEventListener("keyup", function(e) {
