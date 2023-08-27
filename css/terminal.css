@@ -106,10 +106,10 @@ border-right: .15em solid #ff006e;
 	);
 	background-size: 110% 110%; /* Increase the size of the gradient */
 	position:fixed;
-	top:3vh;
-	left:2vw;
-	width: 96vw;
-	height:92vh;
+	top:3dvh;
+	left:2dvw;
+	width: 96dvw;
+	height:92dvh;
 	z-index: -1;
 }
 
@@ -119,10 +119,10 @@ border-right: .15em solid #ff006e;
 	animation-delay: 0s, 2s;
 	animation-iteration-count: 1, infinite;
 	position: fixed;
-	top: 3vh;
-	left: 2vw;
-	width: 96vw;
-	height: 92vh;
+	top: 3dvh;
+	left: 2dvw;
+	width: 96dvw;
+	height: 92dvh;
 	padding: 0px;
 	z-index: 3;
 	pointer-events: none;
@@ -141,10 +141,10 @@ border-right: .15em solid #ff006e;
 	animation-duration: 2s;
 
 	position: fixed;
-	bottom: 97vh;
-	left: 2vw;
-	width: 96vw;
-	height: 100vh;
+	bottom: 97dvh;
+	left: 2dvw;
+	width: 96dvw;
+	height: 100dvh;
 	padding: 0px;
 
 	background-color: black;
@@ -153,15 +153,15 @@ border-right: .15em solid #ff006e;
 
 @keyframes reveal-terminal-top {
 	from {
-		bottom: calc(50vh - 1px - 0.5em);
+		bottom: calc(50dvh - 1px - 0.5em);
 	}
 
 	50% {
-		bottom: calc(50vh - 1px - 0.5em);
+		bottom: calc(50dvh - 1px - 0.5em);
 	}
 
 	to {
-		bottom: 96vh;
+		bottom: 96dvh;
 	}
 }
 
@@ -170,10 +170,10 @@ border-right: .15em solid #ff006e;
 	animation-duration: 2s;
 
 	position: fixed;
-	top: 95vh;
-	left: 2vw;
-	width: 96vw;
-	height: 100vh;
+	top: 95dvh;
+	left: 2dvw;
+	width: 96dvw;
+	height: 100dvh;
 	padding: 0px;
 
 	background-color: black;
@@ -182,35 +182,35 @@ border-right: .15em solid #ff006e;
 
 @keyframes reveal-terminal-bot {
 	from {
-		top: calc(50vh - 1px - 0.5em);
+		top: calc(50dvh - 1px - 0.5em);
 	}
 
 	50% {
-		top: calc(50vh - 1px - 0.5em);
+		top: calc(50dvh - 1px - 0.5em);
 	}
 
 	to {
-		top: 96vh;
+		top: 96dvh;
 	}
 }
 
 @keyframes build-terminal {
 	from {
-		left: 50vw;
+		left: 50dvw;
 		width: 1px;
 		height: 0px;
-		top: calc(50vh - 1px - 0.5em);
+		top: calc(50dvh - 1px - 0.5em);
 	}
 
 	50% {
-		left: 2vw;
-		width: 96vw;
+		left: 2dvw;
+		width: 96dvw;
 		height: 0px;
 
-		top: calc(50vh - 1px - 0.5em);
+		top: calc(50dvh - 1px - 0.5em);
 	}
 	to {
-		height: 92vh;
+		height: 92dvh;
 	}
 }
 
